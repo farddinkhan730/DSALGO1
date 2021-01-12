@@ -252,7 +252,7 @@ class GFG741
 // Java program to find the only
 // repeating element in an array
 // where elements are from 1 to n-1.
-class GFG412
+class find_the_only_repeating_element_in_an_array
 {
     // Function to find repeted element
     static int findRepeating(int arr[], int n)
@@ -274,5 +274,55 @@ class GFG412
         int arr[] = { 5, 4, 3, 9, 8, 9, 1, 6, 2, 5};
         int n = arr.length;
         System.out.println(findRepeating(arr, n));
+    }
+}
+// Java program to find the array
+// element that appears only once
+class find_the_array_element_that_appears_only_once
+{
+    // Return the maximum Sum of difference
+    // between consecutive elements.
+    static int findSingle(int ar[], int ar_size)
+    {
+        // Do XOR of all elements and return
+        int res = ar[0];
+        for (int i = 1; i < ar_size; i++)
+            res = res ^ ar[i];
+
+        return res;
+    }
+    public static void main (String[] args)
+    {
+        int ar[] = {2, 3, 5, 4, 5, 3, 4};
+        int n = ar.length;
+        System.out.println("Element occurring once is " +
+                findSingle(ar, n) + " ");
+    }
+}
+//method 2
+class find_single_element_in_array{
+    static int single_element(int a[],int n){
+        HashMap<Integer,Integer> h=new HashMap<>();
+        for (int i = 0; i < a.length; i++) {
+            if (h.containsKey(a[i])){
+                h.put(a[i],h.get(a[i])+1);
+            }
+            else
+            h.put(a[i],1);
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (h.get(a[i]) == 1) {
+                int m = a[i];
+                return m;
+            }
+        }
+
+            return 0;
+    }
+
+    public static void main(String[] args) {
+        int a[]={1,2,45,2,1,2};
+        int n=a.length;
+        System.out.println(single_element(a,n));
     }
 }
