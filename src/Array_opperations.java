@@ -1,8 +1,5 @@
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class Array_opperations {
     static int Insertion(int a[],int start,int n,int key){
@@ -189,4 +186,93 @@ class find_an_element_in_sorted_array_of_infinite_size{
         else
             System.out.println("Element found at index " + ans);
 }
+}
+//method 1
+class find_repetative_element_in_array{
+    public static void main(String[] args) {
+        int a[]={1,2,3,5,1};
+        int n=a.length;
+        System.out.println(repetative(a,n));
+    }
+    static int repetative(int a[],int n){
+        int sum=0;
+        for (int i = 0; i < n; i++) {
+            sum+=a[i];
+        }
+        return sum-(((n-1)*n)/2);
+    }
+}
+// method 2
+class find_repitative{
+    static int repetative(int a[],int n){
+        HashSet<Integer> h=new HashSet<>();
+        for (int i = 0; i <n ; i++) {
+            if (h.contains(a[i])) {
+                return a[i];
+            }
+            h.add(a[i]);
+        }
+        return 0;
+    }
+    public static void main(String[] args) {
+
+        int a[]={9, 8, 2, 6, 1, 8, 5, 3, 4, 7 ,25};
+        System.out.println(repetative(a,a.length));
+    }
+}
+//method 3
+// Java program to find the only repeating
+// element in an array where elements are
+// from 1 to n-1.
+class GFG741
+{
+
+    static int findRepeating(int arr[], int n)
+    {
+
+        // res is going to store value of
+        // 1 ^ 2 ^ 3 .. ^ (n-1) ^ arr[0] ^
+        // arr[1] ^ .... arr[n-1]
+        int res = 0;
+        for (int i = 0; i < n - 1; i++)
+            res = res ^ (i + 1) ^ arr[i];
+        res = res ^ arr[n - 1];
+
+
+        return res;
+    }
+    public static void main(String[] args)
+    {
+        int arr[] = { 9, 8, 2, 6, 1, 8, 5, 3, 4, 7 };
+        int n = arr.length;
+        System.out.println(findRepeating(arr, n));
+    }
+}
+//method 4
+// Java program to find the only
+// repeating element in an array
+// where elements are from 1 to n-1.
+class GFG412
+{
+    // Function to find repeted element
+    static int findRepeating(int arr[], int n)
+    {
+        int missingElement = 0;
+        for (int i = 0; i < n; i++){
+            int element = arr[Math.abs(arr[i])];
+            System.out.println(element+" e");
+            if(element < 0){
+                missingElement = arr[i];
+                break;
+            }
+            arr[Math.abs(arr[i])] = -arr[Math.abs(arr[i])];
+        }
+        return Math.abs(missingElement);
+    }
+    public static void main(String[] args)
+    {
+        int arr[] = { 5, 4, 3, 9, 8, 9, 1, 6, 2, 5};
+        int n = arr.length;
+        System.out.println(findRepeating(arr, n));
+    }
 }
