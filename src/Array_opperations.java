@@ -715,12 +715,16 @@ class sort_acc_to_frequency{
         HashMap<Integer,Integer> hs=new HashMap<>();
         int count=0;
         for (int i = 0; i < n; i++) {
+            count=0;
             for (int j = 0; j < n; j++) {
                 if(a[i]==a[j]){
                     count++;
                 }
                 hs.put(a[i],count);
             }
+        }
+        for (int i = 0; i < n; i++) {
+//            if(hs.)
         }
         System.out.println(hs);
     }
@@ -729,5 +733,26 @@ class sort_acc_to_frequency{
         int a[]={5,2,2,8,5,6,8,8};
         int n=a.length;
         sort_frequency(a,n);
+    }
+}
+class Inversion_count{
+    public static int count_inversion(int a[],int n){
+        int count=0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if(a[i]>a[j]){
+                    if(i<j){
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int a[]={3,1,2};
+        int n=a.length;
+        System.out.println(count_inversion(a,n));
     }
 }
