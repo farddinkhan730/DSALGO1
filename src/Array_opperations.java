@@ -1,5 +1,9 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.SQLOutput;
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class Array_opperations {
     static int Insertion(int a[],int start,int n,int key){
@@ -324,5 +328,406 @@ class find_single_element_in_array{
         int a[]={1,2,45,2,1,2};
         int n=a.length;
         System.out.println(single_element(a,n));
+    }
+}
+// method 1
+//Maximum Subarray Sum Excluding Certain Elements
+class arrya_sub{
+    static boolean isPresent(int B[], int m, int x)
+    {
+        for (int i = 0; i < m; i++)
+            if (B[i] == x)
+                return true;
+
+        return false;
+    }
+    static int findMaxSubarraySumUtil(int A[], int B[],
+                                      int n, int m)
+    {
+
+        // set max_so_far to INT_MIN
+        int max_so_far = -2147483648, curr_max = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+
+            // if the element is present in B,
+            // set current max to 0 and move to
+            // the next element
+            if (isPresent(B, m, A[i]))
+            {
+                curr_max = 0;
+                continue;
+            }
+
+            // Proceed as in Kadane's Algorithm
+            curr_max = Math.max(A[i], curr_max + A[i]);
+            max_so_far = Math.max(max_so_far, curr_max);
+        }
+        return max_so_far;
+    }
+    static void findMaxSubarraySum(int A[], int B[], int n,
+                                   int m)
+    {
+        int maxSubarraySum
+                = findMaxSubarraySumUtil(A, B, n, m);
+
+        if (maxSubarraySum == -2147483648)
+        {
+            System.out.println("Maximum Subarray Sum"
+                    + " "
+                    + "can't be found");
+        }
+        else {
+            System.out.println("The Maximum Subarray Sum = "
+                    + maxSubarraySum);
+        }
+    }
+
+    public static void main(String[] args)
+    {
+
+        int A[] = { 3, 4, 5, -4, 6 };
+        int B[] = { 1, 8, 5 };
+
+        int n = A.length;
+        int m = B.length;
+        findMaxSubarraySum(A, B, n, m);
+    }
+}
+//method 2
+class array_sub_sum{
+    static int findMaxSubarraySumUtil(int A[], int B[],
+                                      int n, int m)
+    {
+        int max_so_far = Integer.MIN_VALUE, curr_max = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            // if the element is present in B,
+            // set current max to 0 and move to
+            // the next element
+            if (Arrays.binarySearch(B, A[i]) >= 0)
+            {
+                curr_max = 0;
+                continue;
+            }
+
+            // Proceed as in Kadane's Algorithm
+            curr_max = Math.max(A[i], curr_max + A[i]);
+            max_so_far = Math.max(max_so_far, curr_max);
+        }
+        return max_so_far;
+    }
+    static void findMaxSubarraySum(int A[], int B[], int n,
+                                   int m)
+    {
+        Arrays.sort(B);
+
+        int maxSubarraySum
+                = findMaxSubarraySumUtil(A, B, n, m);
+
+        // This case will occour when all elements
+        // of A are present in B, thus no subarray
+        // can be formed
+        if (maxSubarraySum == Integer.MIN_VALUE)
+        {
+            System.out.println(
+                    "Maximum subarray sum cant be found");
+        }
+        else
+        {
+            System.out.println("The Maximum subarray sum = "
+                    + maxSubarraySum);
+        }
+    }
+    public static void main(String[] args)
+    {
+        int A[] = { 3, 4, 5, -4, 6 };
+        int B[] = { 1, 8, 5 };
+
+        int n = A.length;
+        int m = B.length;
+
+        // Function call
+        findMaxSubarraySum(A, B, n, m);
+    }
+}
+//Maximum equlibrium sum in an array
+//method 1
+class max_equlibriub_sum{
+    static int sum(int a[],int n){
+        int prifixsum=0;
+                int surfixsum=0;
+                int sum= IntStream.of(a).sum();
+                int res= Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            prifixsum+=a[i];
+            if(prifixsum==sum){
+                res=Math.max(res,prifixsum);
+            }
+            sum-=a[i];
+        }
+        return res;
+    }
+    public static void main(String[] args) {
+        int arr[] = { -2, 5, 3, 1,
+                2, 6, -4, 2 };
+        int n = arr.length;
+        System.out.print(sum(arr, n));
+
+    }
+}
+class hp{
+    static int majority(int a[],int n){
+        HashMap<Integer,Integer> h=new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            if(h.containsKey(a[i])){
+                int count=h.get(a[i])+1;
+                h.put(a[i],count);
+                if(count>n/2){
+                    return a[i];
+                }
+            }
+            h.put(a[i],1);
+        }
+        return -1;
+    }
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+
+        while(t-- > 0)
+        {
+            int n =sc.nextInt();
+            int arr[] = new int[n];
+
+            for(int i = 0; i < n; i++)
+                arr[i] = sc.nextInt();
+
+            System.out.println(majority(arr, n));
+        }
+    }
+}
+
+class Sol
+{
+//    static Long maximum( long a, long b, long c){
+//        return Math.max(Math.max(a,b),c);
+//    }
+//    static Long mini(long a, long b, long c){
+//        return Math.min(Math.min(a,b),c);
+//    }
+static int maximum(int a, int b, int c)
+{
+    return Math.max(Math.max(a, b), c);
+}
+
+    // function to find minimum number
+    static int minimum(int a, int b, int c)
+    {
+        return Math.min(Math.min(a, b), c);
+    }
+    public ArrayList<Long> smallestDifferenceTriplet(long a[],long b[],long c[],long n)
+    {
+        
+        int N=(int)n;
+        int arr1[]=new int[N];
+        int arr2[]=new int[N];
+        int arr3[]=new int[N];
+        for(int i=0;i<n;i++){
+            arr1[i]=(int)a[i];
+            arr2[i]=(int)b[i];
+            arr3[i]=(int)c[i];
+        }
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        Arrays.sort(arr3);
+        ArrayList<Long> al=new ArrayList<Long>();
+
+        // To store resultant three numbers
+        int res_min=0, res_m=0, res_mid=0;
+
+        // pointers to arr1, arr2, arr3
+        // respectively
+        int i = 0, j = 0, k = 0;
+
+        // Loop until one array reaches to its end
+        // Find the smallest difference.
+        int diff = 2147483647;
+
+        while (i < n && j < n && k < n)
+        {
+            int sum = arr1[i] + arr2[j] + arr3[k];
+
+            // maximum number
+            int max = maximum(arr1[i], arr2[j], arr3[k]);
+
+            // Find minimum and increment its index.
+            int min = minimum(arr1[i], arr2[j], arr3[k]);
+            if (min == arr1[i])
+                i++;
+            else if (min == arr2[j])
+                j++;
+            else
+                k++;
+
+            // comparing new difference with the
+            // previous one and updating accordingly
+            if (diff > (max - min))
+            {
+                diff = max - min;
+                res_m = max;
+                res_mid = sum - (max + min);
+                res_min = min;
+            }
+        }
+
+        al.add((long)res_m);
+        al.add((long)res_mid);
+        al.add((long)res_min);
+
+        return al;
+//        Arrays.sort(a);
+//        Arrays.sort(b);
+//        Arrays.sort(c);
+//        ArrayList<Long> al=new ArrayList<Long>();
+//        long res_m=0l,res_min=0l,res_mid=0l;
+//        int i=0;
+//        int j=0;
+//        int k=0;
+//        long diff=2147483647l;
+//        while(i<n && j<n && k<n){
+//            long sum=a[i]+b[j]+c[k];
+//            long max=maximum(a[i],b[j],c[k]);
+//            long min=mini(a[i],b[j],c[k]);
+//            if(min==a[i]) i++;
+//            else if(min==b[j]) j++;
+//            else    k++;
+//
+//
+//            if(diff>(max-min)){
+//                diff=max-min;
+//                res_m=max;
+//                res_mid=sum-(max+min);
+//                res_min=min;
+//            }
+//
+//        }
+//        al.add(res_m);
+//        al.add(res_mid);
+//        al.add(res_min);
+//
+//        return al;
+    }
+}
+
+class Array {
+
+    // Driver code
+    public static void main (String[] args) throws IOException {
+        Scanner sc=new Scanner(System.in);
+        int testcases = sc.nextInt();
+        // looping through all testcases
+        while(testcases-- > 0){
+            int n=sc.nextInt();
+            long a[]=new long[n];
+            for(int  i=0;i<n;i++)
+            {
+                a[i]=sc.nextLong();
+            }
+            long b[]=new long[n];
+            for(int  i=0;i<n;i++)
+            {
+                b[i]=sc.nextLong();
+            }
+            long c[]=new long[n];
+            for(int  i=0;i<n;i++)
+            {
+                c[i]=sc.nextLong();
+            }
+            Sol ob=new Sol();
+            ArrayList<Long> ans=ob.smallestDifferenceTriplet(a,b,c,n);
+            System.out.println(ans.get(0)+" "+ans.get(1)+" "+ans.get(2));
+        }
+    }
+}
+//class sortArray{
+//    static int[] asort(int a[],int n,int x){
+//        int ar[]=new int[n];
+//        HashMap<Integer,Integer> hm=new HashMap<>();
+//        ArrayList<Integer> al=new ArrayList<>();
+//        for (int i = 0; i < n; i++) {
+//            hm.put(i,Math.abs(x-a[i]));
+//            al.add(Math.abs(x-a[i]));
+//        }
+//        System.out.println(hm);
+//        Collections.sort(al);
+//        System.out.println(al);
+//        int k=0;
+//        for (int i = 0; i < n-1; i++) {
+//            for (int j = i+1; j < n; j++) {
+//                if (al.get(i) ==hm.get(j)) {
+//                    ar[k] = a[j];
+//                    k++;
+//                    System.out.println(a[j]+" aj "+a[k]);
+//                }
+//            }
+//        }
+//
+//       return ar;
+//    }
+//    public static void main(String[] args) {
+//        int a[]={10,5,3,9,2};
+//        int x=7;
+//        int b[]=asort(a,a.length,x);
+//        for (int i = 0; i < b.length; i++) {
+//            System.out.print(b[i]+" ");
+//        }
+//
+//    }
+//}
+class sort_array_in_wave_form{
+    static void wave(int a[],int n){
+        Arrays.sort(a);
+        for (int i = 0; i < n; i=i+2) {
+            for (int j = i+1; j < n; j++) {
+                int temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+                break;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            System.out.print(a[i]+" ");
+        }
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {20, 10, 8, 6, 4, 2};
+        int n = arr.length;
+        wave(arr, n);
+    }
+}
+class sort_acc_to_frequency{
+    public static void sort_frequency(int a[],int n){
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        int count=0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if(a[i]==a[j]){
+                    count++;
+                }
+                hs.put(a[i],count);
+            }
+        }
+        System.out.println(hs);
+    }
+
+    public static void main(String[] args) {
+        int a[]={5,2,2,8,5,6,8,8};
+        int n=a.length;
+        sort_frequency(a,n);
     }
 }
