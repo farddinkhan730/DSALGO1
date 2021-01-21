@@ -1,7 +1,6 @@
-//public class linklist_find_triple_sum_equal_to_given_sum {
+package Linked_list;//public class linklist_find_triple_sum_equal_to_given_sum {
 //}
 import java.util.*;
-import java.util.stream.Stream;
 
 class Node{
     int data;
