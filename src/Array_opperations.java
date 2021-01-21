@@ -756,3 +756,41 @@ class Inversion_count{
         System.out.println(count_inversion(a,n));
     }
 }
+// Java program to check if two strings
+// are anagrams of each other
+class G{
+
+    static boolean isAnagram(String c, String d)
+    {
+        if (c.length() != d.length())
+            return false;
+
+        int count = 0;
+        for(int i = 0; i < c.length(); i++)
+        {
+            count = count + c.charAt(i);
+            System.out.println(count+" =count");
+        }
+        for(int i = 0; i < d.length(); i++)
+        {
+            count = count - d.charAt(i);
+            System.out.println(count+" =count");
+
+        }
+        return (count == 0);
+    }
+    public static void main(String[] args)
+    {
+        String str1 = "geeksforgeeks";
+        String str2 = "forgeeksgeeks";
+
+        // Function call
+        if (isAnagram(str1, str2))
+            System.out.print("The two strings are " +
+                    "anagram of each other");
+        else
+            System.out.print("The two strings are not " +
+                    "anagram of each other");
+    }
+}
+

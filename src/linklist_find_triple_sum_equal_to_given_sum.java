@@ -125,7 +125,7 @@ class Next_greter_element {
             System.out.println(arr[j] + " ---> " + arr1[j]);
     }
 
-    /* Driver program to test above functions */
+    /* Driver program to Menu.test above functions */
     public static void main(String[] args)
     {
         int arr[] = { 11, 13, 21, 3 };
