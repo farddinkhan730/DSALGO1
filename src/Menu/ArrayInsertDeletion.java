@@ -4,7 +4,45 @@ import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class test {
+public class ArrayInsertDeletion {
+    public ArrayInsertDeletion(){
+        System.out.println("Enter the size of array");
+        int n=sc.nextInt();
+        int a[]=new int[n];
+        System.out.println("Enter the values of array");
+        for (int i = 0; i <n-1 ; i++) {
+            a[i]=sc.nextInt();
+        }
+        System.out.println("Enter 1 for inserting value in array");
+        System.out.println("Enter 2 for deleting any specific value from an array ");
+        System.out.println("Enter 3 for traversing array");
+        System.out.println("Enter 4 to perform sorting ");
+        System.out.println("Enter 5 to delete entire array");
+        System.out.println("Enter 6 to perform all operation");
+        System.out.println("N");
+        int N=sc.nextInt();
+        switch (N){
+            case 1:        insert(a,n);
+                break;
+            case 2:        deletion(a,n);
+                break;
+            case 3:        traversing(a,n);
+                break;
+            case 4:        sort(a,n);
+                break;
+            case 5:        delete_all_Element_array(a,n);
+                break;
+            case 6:    insert(a,n);
+                        deletion(a,n);
+                        traversing(a,n);
+                        sort(a,n);
+                        delete_all_Element_array(a,n);
+                        break;
+            default:
+                System.out.println("PLEASE ENTER THE VALID INPUT");
+                break;
+        }
+    }
     public static Scanner sc=new Scanner(System.in);
     public static void insert(int a[],int n) {
         System.out.println("Insertion Prog Start");
@@ -91,15 +129,6 @@ public class test {
         System.out.println();
         System.out.println("Sorting begins......");
 
-//        for (int i = 1; i < n; i++) {
-//            int j=i;
-//            int s=a[i];
-//            while(j>0 && s<a[j-1]){
-//                a[j]=a[j-1];
-//                j=j-1;
-//            }
-//            a[i-1]=s;
-//        }
         Arrays.sort(a);
         for (int i = 0; i < n; i++) {
             System.out.print(a[i]+" ");
@@ -111,46 +140,8 @@ public class test {
         System.out.println();
         System.out.println("All Elements are deleted now");
         a=null;
-//        for (int i = 0; i < a.length; i++) {
-//            System.out.print(a[i]+" ");
-//        }
+
         System.out.println("Thanks for running the program \uD83D\uDE0A...........");
     }
 
-    public static void main(String[] args) {
-        System.out.println("Enter the size of array");
-        int n=sc.nextInt();
-        int a[]=new int[n];
-        System.out.println("Enter the values of array");
-        for (int i = 0; i <n-1 ; i++) {
-            a[i]=sc.nextInt();
-        }
-        insert(a,n);
-        deletion(a,n);
-        traversing(a,n);
-        sort(a,n);
-        delete_all_Element_array(a,n);
-//        System.out.println("Enter 1 for inserting value in array");
-//        System.out.println("Enter 2 for deleting any specific value from an array ");
-//        System.out.println("Enter 3 for traversing array");
-//        System.out.println("Enter 4 to perform sorting ");
-//        System.out.println("Enter 5 to delete entire array");
-//        System.out.println("N");
-//        int N=sc.nextInt();
-//        switch (n){
-//            case 1:        insert(a,n);
-//                            break;
-//            case 2:        deletion(a,n);
-//                            break;
-//            case 3:        traversing(a,n);
-//                            break;
-//            case 4:        sort(a,n);
-//                            break;
-//            case 5:        delete_all_Element_array(a,n);
-//                            break;
-//            default:
-//                System.out.println("PLEASE ENTER THE VALID INPUT");
-//                break;
-//        }
-    }
 }

@@ -1,8 +1,11 @@
-package Menu;
+import Menu.ArrayInsertDeletion;
+import Menu.Check_ANagram;
+import Menu.Fizz_buzz;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Project {
+public class Project {    // test class yhi h
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         System.out.println("Press 1 to check to arrays String are Anagram or not");
@@ -13,7 +16,7 @@ public class Project {
         switch (n){
             case 1: Check_ANagram obj=new Check_ANagram();
             break;
-            case 2: test obj1=new test();
+            case 2: ArrayInsertDeletion obj1=new ArrayInsertDeletion();
             break;
             case 3: Fizz_buzz obj2=new Fizz_buzz();
             break;

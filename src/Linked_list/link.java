@@ -151,9 +151,15 @@ class delete_node{
     }
     public void delete(int x){
         Node temp=head,prev=null;
-        if(temp!=null && temp.data==x){
-            head=temp.next;
-            return;
+//        if(temp!=null && temp.data==x){
+//            head=temp.next;
+//            return;
+//        }
+        for (int i=0;i<x+1;i++){
+            if(temp!=null && i==x){
+                prev=temp;
+                temp=temp.next;
+            }
         }
         while (temp!=null && temp.data!=x){
             prev=temp;
