@@ -184,3 +184,47 @@ class delete_node{
         }
     }
 }
+class swap_node{
+    Node head;
+    static class Node {
+        int data;
+        Node next;
+    public Node( int d) {
+            next = null;
+            data = d;
+        }
+    }
+    static Node swap(Node head,Node x,Node y){
+        Node temp=null,prev=head;
+        while(head!=null){
+            if(head.next==x || head.next==y){
+                if(head.next==x) {
+                    temp = head.next;
+                    prev=y;
+                    y.next=head.next.next;
+                }
+                if(head.next==y){
+                    temp = head.next;
+                    prev=x;
+                    y.next=head.next.next;   temp = head.next;
+                    prev=x;
+                    x.next=head.next.next;
+                }
+            }
+            head=head.next;
+        }
+        return head;
+    }
+    public static void main(String[] args) {
+        swap_node ls=new swap_node();
+        ls.head=new Node(1);
+        Node s=new Node(23);
+        Node sa=new Node(79);
+        Node sb=new Node(46);
+        Node cx=swap(ls.head, s,sb);
+        while(cx!=null){
+            System.out.println(cx.data);
+            cx=cx.next;
+        }
+    }
+}
