@@ -1,5 +1,7 @@
 package Linked_list;
 
+import java.util.HashSet;
+
 public class link {
     Node head;
     static class Node {
@@ -333,6 +335,52 @@ class linked_LIst{
             System.out.println(obj.data);
             obj=obj.next;
         }
+
+    }
+}
+class abc{
+    Node head;
+    static class Node{
+        Node next;
+        int data;
+        public Node(int d){
+            data=d;
+        }
+    }
+    public int commonpoint(Node h, Node h1){
+        HashSet<Node> hs=new HashSet<>();
+        while (h!=null){
+            hs.add(h);
+            h=h.next;
+        }
+        while (h1!=null){
+            if(hs.contains(h1)){
+                return h1.data;
+            }
+            h1=h1.next;
+        }
+        return -1;
+
+    }
+    public void push(int n){
+        Node newd=new Node(n);
+        newd.next=head;
+        head=newd;
+    }
+    public static void main(String[] args) {
+        abc ls=new abc();
+        abc ls1=new abc();
+        ls.push(5);
+        ls.push(4);
+        ls.push(3);
+        ls.push(2);
+        ls1.push(9);
+        ls1.push(8);
+        ls1.push(5);
+        ls1.push(44);
+        ls1.push(31);
+        int  nls=ls.commonpoint(ls.head,ls1.head);
+        System.out.println(nls);
 
     }
 }
