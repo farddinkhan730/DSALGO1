@@ -228,3 +228,111 @@ class swap_node{
         }
     }
 }
+
+class list{
+    Node head;
+    static class Node{
+        int data;
+        Node next;
+        Node(int d){
+            data=d;
+            next=null;
+        }
+    }
+    public void last_Node(){
+        Node lst=head;
+        Node sec_last=null;
+        if(head==null || head.next==null)
+            return;
+        while( lst.next!=null){
+            sec_last=lst;
+            lst=lst.next;
+        }
+        sec_last.next=null;
+        lst.next=head;
+        head=lst;
+
+    }
+    public void push(int d){
+        Node new_Node=new Node(d);
+        new_Node.next=head;
+        head=new_Node;
+    }
+    public static void main(String[] args) {
+        list ls=new list();
+        ls.push(3);
+        ls.push(2);
+        ls.push(1);
+        ls.last_Node();
+        Node ob=ls.head;
+        while (ob!=null){
+            System.out.println(ob.data);
+            ob=ob.next;
+        }
+    }
+}
+
+class linked_LIst{
+    Node head;
+    static class Node{
+        Node next;
+        int data;
+        public Node(int d){
+            data=d;
+            next=null;
+        }
+    }
+    public void insert(int datad){
+        Node neww =new Node(datad);
+        if(head==null){
+            head=neww;
+        }
+
+        else {
+            head.next=neww;
+
+        }
+    }
+    public void push(int new_data){
+        Node new_node=new Node(new_data);
+        new_node.next=head;
+        head=new_node;
+    }
+    public static linked_LIst Intersection(Node h, Node h1){
+        Node temp=h;
+        Node curr=h1;
+        linked_LIst newli=new linked_LIst();
+        while(temp!=null){
+            curr=h1;
+            while (curr!=null){
+                if(temp.data==curr.data){
+                    newli.insert(temp.data);
+                }
+                curr= curr.next;
+            }
+            temp=temp.next;
+        }
+        return newli;
+    }
+
+    public static void main(String[] args) {
+        linked_LIst ls=new linked_LIst();
+        linked_LIst ls1=new linked_LIst();
+        ls.push(5);
+        ls.push(4);
+        ls.push(3);
+        ls.push(2);
+        ls1.push(9);
+        ls1.push(8);
+        ls1.push(5);
+        ls1.push(4);
+        ls1.push(3);
+        linked_LIst nls=Intersection(ls.head,ls1.head);
+        Node obj=nls.head;
+        while(obj!=null){
+            System.out.println(obj.data);
+            obj=obj.next;
+        }
+
+    }
+}
