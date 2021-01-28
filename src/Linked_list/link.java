@@ -519,3 +519,58 @@ class abc{
     }
 }
 
+// pring linked list forward and reverse
+class frwd_rvrs{
+     Node head;
+     class Node{
+         Node next;
+         int data;
+         Node(int d){
+             data=d;
+             next=null;
+         }
+     }
+     public void print(Node head){
+         if(head!=null) {
+             System.out.println(head.data);
+             print(head.next);
+         }
+         }
+     public Node insert(Node head,int d){
+         Node temp= new Node(d);
+         temp.next=null;
+         if(head==null){
+             head=temp;
+         }
+         else{
+             Node temp1=head;
+             while (temp1.next!=null) temp1=temp1.next;
+             temp1.next=temp;
+         }
+         return head;
+     }
+    public void push(int n){
+        Node newd=new Node(n);
+        newd.next=head;
+        head=newd;
+    }
+
+    public static void main(String[] args) {
+        frwd_rvrs ls=new frwd_rvrs();
+         Node head=null;
+//        head =ls.insert(head,456);
+//        head=ls.insert(head,44);
+//        head=ls.insert(head,78);
+        ls.print(ls.head);
+        ls.push(42);
+        ls.push(32);
+        ls.push(234);
+        ls.print(ls.head);
+
+//        Node km=ls.head;
+//        while(km!=null){
+//            System.out.println(km.data);
+//            km=km.next;
+//        }
+    }
+}
