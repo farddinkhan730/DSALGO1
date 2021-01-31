@@ -282,3 +282,149 @@ class swap_kth_node_first_and_last{
         }
     }
 }
+class mergesort{
+    public void merge(int a[],int l[] ,int []r ){
+        int n=l.length;
+        int m=r.length;
+        int i=0,j=0,k=0;
+        while( i<n && j<m){
+            if(l[i]<=r[j]){
+                a[k++]=l[i++];
+            }
+            else {
+                a[k++]=r[j++];
+            }
+        }
+        while (i<n){
+            a[k++]=l[i++];
+        }
+        while(j<m){
+            a[k++]=r[j++];
+        }
+    }
+    public void merge_sort(int a[]){
+        int l=0;
+        int r=a.length;
+
+        if(r<l) return;
+        if(a.length<2)  return;
+        int n=a.length;
+        if (l<r){
+            int mid=l+(r-l)/2;
+            int left[]=new int[mid];
+            int rigth[]=new int[n-mid];
+            for (int i = 0; i < mid; i++) {
+                left[i]=a[i];
+            }
+            for (int j = mid; j <n ; j++) {
+                rigth[j-mid]=a[j];
+            }
+            merge_sort(left);
+            merge_sort(rigth);
+            merge(a,left,rigth);
+        }
+    }
+
+    public static void main(String[] args) {
+        int a[]={1,54,78,32,0,2,3,4,89};
+        mergesort obj=new mergesort();
+        obj.merge_sort(a);
+        for (int i = 0; i <a.length ; i++) {
+            System.out.println(a[i]);
+        }
+    }
+}
+class doubly_linked_list_merge_sort{
+    Node head;
+    static class Node{
+        Node next;
+        Node prev;
+        int data;
+        Node(int d){
+            data=d;
+            next=null;
+            prev=null;
+        }
+    }
+    Node mid_node(Node h){
+        Node fast=h,slow=h;
+        while(fast.next!=null && fast.next.next!=null ){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        Node temp=slow.next;
+        slow.next=null;
+
+        return temp;
+    }
+    Node sortDoubly(Node head)
+    {
+        // add your code here
+        if(head==null || head.next==null){
+            return head;
+        }
+        Node temp=head;
+        Node mid=mid_node(temp);
+
+        Node left=sortDoubly(head);
+        Node right=sortDoubly(mid);
+
+        Node result=merge(left,right);
+        return result;
+    }
+    Node merge(Node l,Node r){
+        if(l==null) return r;
+        if(r==null) return l;
+
+        if(l.data<r.data){
+            l.next=merge(l.next,r);
+            l.next.prev=l;
+            l.prev=null;
+            return l;
+        }
+        else{
+            r.next=merge(l,r.next);
+            r.next.prev=r;
+            r.prev=null;
+            return r;
+        }
+        // return l;
+    }
+    public void push(int x){
+        Node new_node=new Node(x);
+        if(head==null) head=new_node;
+        new_node.next=head;
+        head=new_node;
+    }
+    void print(Node node) {
+        Node temp = node;
+        System.out.println("Forward Traversal using next pointer");
+        while (node != null) {
+            System.out.print(node.data + " ");
+            temp = node;
+            node = node.next;
+        }
+        System.out.println("\nBackward Traversal using prev pointer");
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.prev;
+        }
+    }
+
+    public static void main(String[] args) {
+        doubly_linked_list_merge_sort list = new doubly_linked_list_merge_sort();
+        list.head = new Node(10);
+        list.head.next = new Node(30);
+        list.head.next.next = new Node(3);
+        list.head.next.next.next = new Node(4);
+        list.head.next.next.next.next = new Node(20);
+        list.head.next.next.next.next.next = new Node(5);
+
+
+        Node node = null;
+        node = list.sortDoubly(list.head);
+        System.out.println("Linked list after sorting :");
+        list.print(node);
+
+    }
+}
