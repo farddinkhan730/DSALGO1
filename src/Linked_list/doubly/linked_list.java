@@ -647,3 +647,58 @@ class Sort_a_K_sorted{
         }
     }
 }
+class rotate_by_k{
+    Node head;
+    class Node {
+        Node next;
+        Node prev;
+        int data;
+        Node(int d){
+            data=d;
+        }
+    }
+    public void rotate(Node head,int n){
+       Node temp=head;
+       Node temp1=head;
+       int N=n;
+       while(temp1.next!=null){
+           temp1=temp1.next;
+       }
+        while(temp!=null && N!=0){
+            temp1.next=temp;
+            temp.prev=temp1;
+            temp.next=null;
+            N--;
+        }
+        while( head!=null && n!=0){
+            head=head.next;
+            n--;
+        }
+
+    }
+    public void push(int x){
+        Node new_node=new Node(x);
+        new_node.prev=new_node;
+        new_node.next=head;
+        head=new_node;
+        if(head!=null){
+            new_node.next=head;
+            head=new_node;
+        }
+    }
+
+    public static void main(String[] args) {
+        rotate_by_k ls=new rotate_by_k();
+        ls.push(45);
+        ls.push(66);
+        ls.push(32);
+        ls.push(12);
+        ls.push(7);
+        ls.rotate(ls.head,2);
+        Node h=ls.head;
+        while(h!=null){
+            System.out.println(h.data);
+            h=h.next;
+        }
+    }
+}
