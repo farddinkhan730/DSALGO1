@@ -1,7 +1,6 @@
 package Linked_list.doubly;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 public class linked_list {
     Node head;
@@ -426,5 +425,225 @@ class doubly_linked_list_merge_sort{
         System.out.println("Linked list after sorting :");
         list.print(node);
 
+    }
+}
+class delete_Node_same_As_x{
+    Node head;
+    class Node{
+        Node next;
+        Node prev;
+        int data;
+        Node(int d){
+        data=d;
+        }
+    }
+    public Node delete_Node(Node x){
+        if(head==null || x==null){
+            return null;
+        }
+        if(head==x){
+            head=x.next;
+        }
+        if(x.next!=null){
+            x.next.prev=x.prev;
+        }
+        if(x.prev!=null){
+            x.prev.next=x.next;
+        }
+        x=null;
+        return head;
+    }
+    public void delete(Node head,int x){
+        Node temp=head;
+        Node current;
+        if(head==null) return;
+        while (temp!=null){
+            if(temp.data==x) {
+                current = temp.next;
+                delete_Node(temp);
+                temp = current;
+            }
+            else {
+                temp=temp.next;
+            }
+        }
+    }
+    public void push(int x){
+        Node new_node=new Node(x);
+        if (head==null){
+            head=new_node;
+            return;
+        }
+        new_node.prev=null;
+        new_node.next=head;
+        if (head!=null) head.prev=new_node;
+        head=new_node;
+    }
+    public static void main(String[] args) {
+        delete_Node_same_As_x ls=new delete_Node_same_As_x();
+        ls.push(45);
+        ls.push(47);
+        ls.push(77);
+        ls.push(33);
+        ls.push(85);
+        ls.push(45);
+        ls.delete(ls.head,45);
+        Node h=ls.head;
+        while(h!=null){
+            System.out.println(h.data);
+            h=h.next;
+        }
+    }
+}
+class sort{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int a[]={60,5,12,25,24,8,49,61,45,28,3,6,19,40,34,50,33,39,10,4,21,44,1,15,27,55,54,18,26,7,11,13,31,47,9,2,16};
+        Arrays.sort(a);
+        System.out.println("Cyber security class student's Roll Number's");
+        for (int i = 0; i < a.length; i++) {
+            System.out.println("Roll no "+a[i]);
+        }
+
+    }
+}
+class remove_duplicate_element{
+    Node head;
+    class Node{
+        Node next;
+        Node prev;
+        int data;
+        Node(int d){
+            data=d;
+        }
+    }
+    public Node delete_Node(Node x){
+        if(head==null || x==null){
+            return null;
+        }
+        if(head==x){
+            head=x.next;
+        }
+        if(x.next!=null){
+            x.next.prev=x.prev;
+        }
+        if(x.prev!=null){
+            x.prev.next=x.next;
+        }
+        x=null;
+        return head;
+    }
+    public Node delete(Node head){
+        Node temp=head;
+        Node current;
+        Node temp1=head;
+        if(head==null) return null;
+        while (temp!=null){
+            temp1=temp.next;
+            while(temp1!=null) {
+                if (temp.data == temp1.data) {
+//                    current = temp1.next;
+                    head=delete_Node(temp1);
+                    temp1 = temp1.next;
+                } else {
+                    temp1 = temp1.next;
+                }
+            }
+            temp=temp.next;
+        }
+        return head;
+    }
+    public void push(int x){
+        Node new_node=new Node(x);
+        if (head==null){
+            head=new_node;
+            return;
+        }
+        new_node.prev=null;
+        new_node.next=head;
+        if (head!=null) head.prev=new_node;
+        head=new_node;
+    }
+    public static void main(String[] args) {
+        remove_duplicate_element ls=new remove_duplicate_element();
+        ls.push(45);
+        ls.push(47);
+        ls.push(77);
+        ls.push(33);
+        ls.push(85);
+        ls.push(77);
+        ls.push(99);
+        ls.push(85);
+        ls.push(45);
+        Node h=ls.delete(ls.head);
+//        Node h=ls.head;
+        while(h!=null){
+            System.out.println(h.data);
+            h=h.next;
+        }
+    }
+}
+class Sort_a_K_sorted{
+    Node head;
+    class Node {
+        Node head;
+        Node next;
+        Node prev;
+        int data;
+        Node(int d){
+            data=d;
+            next=null;
+            prev=null;
+        }
+    }
+    public void sort(Node head,int k){
+        if(head==null) return;
+        Node h=head;
+//        Node tmep=head;
+        int count=-1;
+        while (h!=null){
+            count++;
+            if(count==k){
+                Node h1=h.next;
+                if(h.data<h1.data){
+                    Node temp=h;
+                    if(h.next!=null)
+                    h.next.prev=h.prev;
+                    if(h.prev!=null)
+                        h.prev.next=h.next;
+                }
+            }
+            h=h.next;
+        }
+    }
+    public void push(int x){
+        Node new_node=new Node(x);
+        if(head==null) head=new_node;
+        new_node.prev=null;
+        new_node.next=head;
+        if(head!=null){
+            new_node.next=head;
+            head=new_node;
+        }
+        head = new_node;
+    }
+
+    public static void main(String[] args) {
+        Sort_a_K_sorted ls=new Sort_a_K_sorted();
+        ls.push(3);
+        ls.push(6);
+        ls.push(2);
+        ls.push(12);
+        ls.push(56);
+        ls.push(8);
+//        ls.push(99);
+//        ls.push(85);
+//        ls.push(45);
+       ls.sort(ls.head,2);
+        Node h=ls.head;
+        while(h!=null){
+            System.out.println(h.data);
+            h=h.next;
+        }
     }
 }
