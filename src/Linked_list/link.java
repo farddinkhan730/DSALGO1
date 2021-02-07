@@ -1,6 +1,9 @@
 package Linked_list;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Scanner;
 
 public class link {
     Node head;
@@ -218,6 +221,7 @@ class swap_node{
         return head;
     }
     public static void main(String[] args) {
+
         swap_node ls=new swap_node();
         ls.head=new Node(1);
         Node s=new Node(23);
@@ -572,5 +576,215 @@ class frwd_rvrs{
 //            System.out.println(km.data);
 //            km=km.next;
 //        }
+    }
+}
+class Node{
+    int data;
+    Node next;
+
+    Node(int x){
+        data = x;
+        next = null;
+    }
+
+}
+class GFG{
+    static void printList(Node node)
+    {
+        while (node != null)
+        {
+            System.out.print(node.data + " ");
+            node = node.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String args[]) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+
+        while(t > 0){
+            int n = sc.nextInt();
+
+            Node head = new Node(sc.nextInt());
+            Node tail = head;
+            HashMap<Node, Integer> mp = new HashMap<Node, Integer>();
+            mp.put(head, head.data);
+            for(int i=0; i<n-1; i++)
+            {
+                tail.next = new Node(sc.nextInt());
+                tail = tail.next;
+                mp.put(tail, tail.data);
+            }
+
+           Node failure = new Node(-1);
+
+            Solution g = new Solution();
+            head = g.pairwiseSwap(head);
+
+           Node temp = head;
+            int f = 0;
+            while (temp != null)
+            {
+                if(mp.get(temp) != temp.data){
+                    f = 1;
+                }
+                temp = temp.next;
+            }
+
+            if(f==1){
+                printList(failure);
+            }
+            else{
+                printList(head);
+            }
+            t--;
+        }
+    }
+}
+
+
+class Solution {
+    public  void swap(Node head,Node h1, Node h2){
+       Node temp=head; Node prev=null; Node t=null;
+        while( temp!=null){
+            if(temp.next==h1 || temp.next==h1){
+                if(temp.next==h1){
+                    t=temp.next;
+                    prev=h2;
+                    h2.next=temp.next.next;
+                }
+                if (temp.next==h2){
+                    t=temp.next;
+                    prev=h1;
+                    h2.next=temp.next.next;
+                    t=temp.next;
+                    prev=h1;
+                    h1.next=temp.next.next;
+                }
+                temp=temp.next;
+            }
+        }
+
+    }
+    public Node pairwiseSwap(Node head)
+    {
+        Node current = head;
+
+        while (current != null && current.next != null) {
+            int i=2;
+            if(i==2) {
+                Node prev = current;
+                Node nextt = current.next;
+                current.next = nextt.next;
+                nextt.next = prev;
+                current = current.next;
+                i--;
+            }
+            else{
+                swap(head,current,current.next);
+            }
+
+        }
+        return head;
+    }
+}
+//class Node {
+//    int data;
+//    Node next;
+//
+//    Node(int d) {
+//        data = d;
+//        next = null;
+//    }
+//}
+
+class GfG{
+
+    static void printList(Node n){
+        while(n!=null){
+            System.out.print(n.data+" ");
+            n = n.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+
+        while (T-- > 0) {
+
+            int n = sc.nextInt();
+            int val = sc.nextInt();
+
+            Node first = new Node(val);
+            Node tail = first;
+            for(int i=0; i<n-1; i++)
+            {
+                val = sc.nextInt();
+                tail.next = new Node(val);
+                tail = tail.next;
+            }
+
+            int m = sc.nextInt();
+            val = sc.nextInt();
+
+            Node second = new Node(val);
+            tail = second;
+            for(int i=0; i<m-1; i++)
+            {
+                val = sc.nextInt();
+                tail.next = new Node(val);
+                tail = tail.next;
+            }
+
+            Solution4 g = new Solution4();
+            Node res = g.addTwoLists(first, second);
+            printList(res);
+        }
+    }
+}
+// } Driver Code Ends
+
+
+/* node for linked list
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+
+*/
+
+class Solution4{
+    static Node addTwoLists(Node first, Node second){
+        // code here
+        // return head of sum list
+        Node temp=null;
+        String s="";
+        String s1="";
+        while(first!=null){
+            s+=first.data;
+        }
+        while(second!=null){
+            s1+=second.data;
+        }
+        int s2=(int)(Integer.parseInt(s)+Integer.parseInt(s1));
+        String s3=    String.valueOf(s2);
+        Node new_node=new Node(s3.charAt(0));
+        if(temp==null)
+            temp=new_node;
+        for(int i=1;i<s3.length();i++){
+            new_node.next=new Node(s3.charAt(i));
+            new_node.next.next=null;
+        }
+        return temp;
+
     }
 }

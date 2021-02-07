@@ -2,16 +2,16 @@ package Linked_list;//public class linklist_find_triple_sum_equal_to_given_sum {
 //}
 import java.util.*;
 
-class Node{
-    int data;
-    Node next;
-
-    Node(int a){
-        data = a;
-        next = null;
-    }
-
-}
+//class Node{
+//    int data;
+//    Node next;
+//
+//    Node(int a){
+//        data = a;
+//        next = null;
+//    }
+//
+//}
 
 class LinkedList{
 
