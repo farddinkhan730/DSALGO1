@@ -1,6 +1,7 @@
 package Linked_list;
 
 import java.util.HashSet;
+import java.util.Scanner;
 
 public class reverse_linked_list {
     Node head;
@@ -243,5 +244,162 @@ class occurence_of_integer_in_linked_list{
         h.Next.Next.Next.Next=new Node(45);
         int s=ls.find_occurence(h,45);
         System.out.println(s);
+    }
+}
+
+class swap_pair_wise{
+    Node head;
+    static class Node{
+        Node next;
+        int data;
+        Node(int d){
+            data=d;
+        }
+    }
+    public void push(int x){
+        Node new_node=new Node(x);
+        if(head==null){
+            head=new_node;
+            return;
+        }
+        new_node.next=head;
+        head=new_node;
+    }
+    public void insert(int n){
+        Node new_node=new Node(n);
+        if(head==null){
+            head=new_node;
+            return;
+        }
+        Node s=head;
+        while(s.next!=null){
+            s=s.next;
+        }
+        s.next=new_node;
+    }
+    public void swap(Node h,Node h2){
+        Node temp=h2;
+        h2.data=h.data;
+        h.data=temp.data;
+    }
+    public void pair_swap(){
+        Node n=head;
+        while(n!=null){
+           swap(n,n.next);
+            n=n.next.next;
+        }
+    }
+    public static void main(String[] args) {
+        swap_pair_wise ls=new swap_pair_wise();
+        ls.push(1);
+        ls.insert(2);
+        ls.insert(3);
+        ls.insert(4);
+        ls.insert(5);
+        ls.insert(6);
+        ls.pair_swap();
+        Node h= ls.head;
+        while (h!=null){
+            System.out.print(h.data+" ");
+            h=h.next;
+        }
+
+    }
+}
+class add_two_number_in_linked_list{
+    Node head;
+    static class Node {
+        Node next;
+        int data;
+        Node(int d){
+            data=d;
+        }
+    }
+    public void push(int x){
+        Node new_node=new Node(x);
+        if(head==null){
+            head=new_node;
+        }
+        new_node.next=head;
+        head=new_node;
+    }
+    public void inser(int x){
+        Node nw_node=new Node(x);
+        if(head==null){
+            head=nw_node;
+        }
+        Node h=head;
+        while(h.next!=null){
+            h=h.next;
+        }
+        h.next=nw_node;
+    }
+    public int length(Node f){
+        int count=0;
+        while(f!=null){
+            count++;
+            f=f.next;
+        }
+        return count;
+    }
+    public void add(Node first,Node second){
+        Node h=first;
+        Node h1=second;
+        int sum=0;
+        int lenf=length(h);
+        int lens=length(h1);
+        if(lenf<lens){
+            Node prev=null;
+            while(h1!=null){
+                Node temp=h1.next;
+                h1.next=prev;
+                prev=h1;
+                h1=temp;
+            }
+            h1=prev;
+            while(h!=null && h1!=null){
+                sum=h1.data+h.data;
+            }
+        }
+        System.out.println(sum);
+    }
+    public static void main(String[] args) {
+        add_two_number_in_linked_list ls=new add_two_number_in_linked_list();
+//        add_two_number_in_linked_list ls1=new add_two_number_in_linked_list();
+//        Node h=new Node(1);
+//        h.next=new Node(2);
+//        Node n=new Node(3);
+//        n.next=new Node(4);
+//        n.next.next=new Node(9);
+//        ls.add(h,n);
+        Scanner sc=new Scanner(System.in);
+        int n = sc.nextInt();
+        int val = sc.nextInt();
+
+        Node first = new Node(val);
+        Node tail = first;
+        for(int i=0; i<n-1; i++)
+        {
+            val = sc.nextInt();
+            tail.next = new Node(val);
+            tail = tail.next;
+        }
+
+        int m = sc.nextInt();
+        val = sc.nextInt();
+
+        Node second = new Node(val);
+        tail = second;
+        for(int i=0; i<m-1; i++)
+        {
+            val = sc.nextInt();
+            tail.next = new Node(val);
+            tail = tail.next;
+        }
+        ls.add(first,second);
+
+
+
+
     }
 }
