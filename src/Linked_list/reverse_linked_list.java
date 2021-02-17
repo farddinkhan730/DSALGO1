@@ -277,17 +277,26 @@ class swap_pair_wise{
         }
         s.next=new_node;
     }
-    public void swap(Node h,Node h2){
-        Node temp=h2;
-        h2.data=h.data;
-        h.data=temp.data;
-    }
-    public void pair_swap(){
-        Node n=head;
-        while(n!=null){
-           swap(n,n.next);
-            n=n.next.next;
+//    public void swap(Node h,Node h2){
+//        Node temp=h2;
+//        h2.data=h.data;
+//        h.data=temp.data;
+//    }
+    public Node pair_swap(Node head){
+        Node temp=head;
+        while(temp!=null ){
+////           swap(n,n.next);
+//            Node y=temp.next;
+//            temp.next=temp.next.next;
+//            temp.next.next=y;
+//            temp=temp.next.next;
+            Node n=temp.next;
+            temp.next=n.next;
+            n=temp;
+            System.out.println(temp.data+" refrence "+temp.next);
+            temp=temp.next.next;
         }
+        return head;
     }
     public static void main(String[] args) {
         swap_pair_wise ls=new swap_pair_wise();
@@ -297,8 +306,7 @@ class swap_pair_wise{
         ls.insert(4);
         ls.insert(5);
         ls.insert(6);
-        ls.pair_swap();
-        Node h= ls.head;
+        Node h=ls.pair_swap(ls.head);
         while (h!=null){
             System.out.print(h.data+" ");
             h=h.next;
@@ -397,9 +405,5 @@ class add_two_number_in_linked_list{
             tail = tail.next;
         }
         ls.add(first,second);
-
-
-
-
     }
 }
