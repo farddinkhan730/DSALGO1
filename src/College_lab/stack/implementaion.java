@@ -1,4 +1,4 @@
-package College_lab.Stack;
+package College_lab.stack;
 
 public class implementaion {
     int a[];

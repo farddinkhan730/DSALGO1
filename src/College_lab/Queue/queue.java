@@ -1,5 +1,7 @@
 package College_lab.Queue;
 
+import java.util.Scanner;
+
 public class queue {
         int a[];
         int front;
@@ -94,6 +96,45 @@ public class queue {
 
 //        }
     }
+}
+// Non primitve data type class use for non primitve queue
+class Employee{
+    String str;
+    int sal;
+    int id;
+    Employee(String str ,int sal,int id){
+        this.str=str;
+        this.sal=sal;
+        this.id=id;
+    }
+}
+class Node{
+    Node next;
+    Employee data;
+    Node(Employee data){
+//        Scanner sc=new Scanner(System.in);
+//        Employee e=new Employee(sc.next(),sc.nextInt(),sc.nextInt());
+        this.data=data;
+        next=null;
+    }
+}
+class Queue_by_non_primitive_data_type_using_linked_list{
+    Node head;
+    Node tail;
+    Queue_by_non_primitive_data_type_using_linked_list(){
+        head=null;
+        tail=null;
+    }
+    public void enqueue(Employee val){
+        Node new_node=new Node(val);
+        if(tail==null){
+            tail=head=new_node;
+        }
+        else {
+            tail.next=new_node;
+        }
+    }
+
 }
 
 class queue_by_linked_list{
