@@ -134,7 +134,29 @@ class Queue_by_non_primitive_data_type_using_linked_list{
             tail.next=new_node;
         }
     }
-
+    public void dequeue(){
+        if(head==null){
+            System.out.println("is Empty");
+        }
+        else {
+            head=head.next;
+        }
+    }
+}
+class Queue_by_non_primitive_data_type_using_linked_list_Main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+//        Employee e=new Employee(sc.next(),sc.nextInt(),sc.nextInt());
+//        or
+        Employee e=new Employee("Atul bewakoof",450,1);
+        Queue_by_non_primitive_data_type_using_linked_list q=new Queue_by_non_primitive_data_type_using_linked_list();
+        q.enqueue(e);
+        Node h=q.head;
+        while (h!=null){
+            System.out.println(h.data.str);
+            h=h.next;
+        }
+    }
 }
 
 class queue_by_linked_list{
