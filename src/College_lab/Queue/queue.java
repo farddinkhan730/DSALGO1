@@ -153,7 +153,7 @@ class Queue_by_non_primitive_data_type_using_linked_list_Main{
         q.enqueue(e);
         Node h=q.head;
         while (h!=null){
-            System.out.println(h.data.str);
+            System.out.println(h.data.str+" "+h.data.id+" "+h.data.sal);
             h=h.next;
         }
     }
