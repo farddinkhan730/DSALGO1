@@ -66,94 +66,85 @@ public class implementaion {
 
     }
 }
-class Node{
-    Node next;
-    int data;
-    Node(int data){
-        this.data=data;
-    }
-}
-class implementalion_of_stack_using_linked_list{
-    Node head;
-    int size;
-    implementalion_of_stack_using_linked_list(){
-        head=null;
-        int size=0;
-    }
-//    public int sze(){
-//        return size;
+//class Node{
+//    Node next;
+//    int data;
+//    Node(int data){
+//        this.data=data;
 //    }
-    public boolean isEmpty(){
-        if(size==0){
-            return true;
-        }
-        else {
-            return false;
-        }
-//        return (size<=0);
-    }
-    public void push(int x){
-        Node new_node=new Node(x);
-        if(head==null){
-            head=new_node;
-            size=size+1;
-        }
-        else {
-            new_node.next = head;
-            head = new_node;
-            size=size+1;
-        }
-    }
-    public int pop(){
-        if(size==0){
-            System.out.println("Stack under flow");
-            return 0;
-        }
-        int temp=head.data;
-        head=head.next;
-        size--;
-        return temp;
-    }
-    public int peek(){
-        if(size<0){
-            System.out.println("Stack under flow");
-            return 0;
-        }
-        return head.data;
-    }
-    public void display(){
-        Node temp=head;
-        while(temp!=null){
-            System.out.println(temp.data);
-            temp=temp.next;
-        }
-    }
-    public void delete_Stack(){
-        head=null;
-        size=0;
-    }
-    public static void main(String[] args) {
-        implementalion_of_stack_using_linked_list stack=new implementalion_of_stack_using_linked_list();
-        System.out.println(stack.isEmpty());
-        stack.push(46);
-        stack.push(78);
-//        stack.sze();
-        stack.push(789);
-        stack.display();
-        System.out.println(stack.isEmpty());
-//        stack.push(98);
-//        stack.push(55);
-//        stack.push(23);
-//        System.out.println(stack.size());
+//}
+//class implementalion_of_stack_using_linked_list{
+//    Node head;
+//    int size;
+//    implementalion_of_stack_using_linked_list(){
+//        head=null;
+//        int size=0;
+//    }
+////    public int sze(){
+////        return size;
+////    }
+//    public boolean isEmpty(){
+//        if(size==0){
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+////        return (size<=0);
+//    }
+//    public void push(int x){
+//        Node new_node=new Node(x);
+//        if(head==null){
+//            head=new_node;
+//            size=size+1;
+//        }
+//        else {
+//            new_node.next = head;
+//            head = new_node;
+//            size=size+1;
+//        }
+//    }
+//    public int pop(){
+//        if(size==0){
+//            System.out.println("Stack under flow");
+//            return 0;
+//        }
+//        int temp=head.data;
+//        head=head.next;
+//        size--;
+//        return temp;
+//    }
+//    public int peek(){
+//        if(size<0){
+//            System.out.println("Stack under flow");
+//            return 0;
+//        }
+//        return head.data;
+//    }
+//    public void display(){
+//        Node temp=head;
+//        while(temp!=null){
+//            System.out.println(temp.data);
+//            temp=temp.next;
+//        }
+//    }
+//    public void delete_Stack(){
+//        head=null;
+//        size=0;
+//    }
+//    public static void main(String[] args) {
+//        implementalion_of_stack_using_linked_list stack=new implementalion_of_stack_using_linked_list();
 //        System.out.println(stack.isEmpty());
+//        stack.push(46);
+//        stack.push(78);
+//        stack.push(789);
 //        stack.display();
-        System.out.println(stack.peek());
-        System.out.println(stack.pop());
-//        stack.display();
-        System.out.println(stack.pop());
+//        System.out.println(stack.isEmpty());
+//        System.out.println(stack.peek());
 //        System.out.println(stack.pop());
-        stack.display();
-        stack.delete_Stack();
-        System.out.println(stack.isEmpty());
-    }
-}
+//        System.out.println(stack.pop());
+//        stack.display();
+//        stack.delete_Stack();
+//        System.out.println(stack.isEmpty());
+//    }
+//}

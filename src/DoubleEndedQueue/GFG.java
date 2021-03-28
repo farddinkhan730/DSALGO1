@@ -20,7 +20,7 @@ class GFG
             newNode.prev = newNode.next = null;
             return newNode;
         }
-    };
+    }
 
     // A structure to represent a deque
     static class Deque {

@@ -115,7 +115,7 @@ public class link {
     }
 }
 
-// delete the node from a lonk list
+// delete the node from a link list
 class delete_node{
     Node head;
     static class Node {

@@ -1,6 +1,7 @@
 package College_lab.Queue;
 
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class queue {
         int a[];
@@ -161,10 +162,10 @@ class Queue_by_non_primitive_data_type_using_linked_list_Main{
 
 class queue_by_linked_list{
     Node head;
+    Node front;
     class Node{
         Node next;
         int data;
-        int front;
         Node(int d){
             data=d;
         }
@@ -173,12 +174,47 @@ class queue_by_linked_list{
         head=null;
     }
     public boolean isEmpty(){
-        return (head==null);
+        return (head==null || front ==null);
     }
     public void enqueue(int x){
         Node new_node=new Node(x);
         if (isEmpty()){
             head=new_node;
+            front=head;
         }
+        Node n=head;
+        while (n.next!=null){
+            n=n.next;
+        }
+        head.next=new_node;
+        new_node.next=null;
+    }
+    public int dequeue(){
+        int m=0;
+        if(isEmpty()){
+            System.out.println("queue is under flow!");
+        }
+        else {
+            m=front.data;
+            front=front.next;
+        }
+        return m;
+    }
+
+    public static void main(String[] args) {
+        queue_by_linked_list q=new queue_by_linked_list();
+        q.enqueue(465);
+        System.out.println(q.isEmpty());
+        System.out.println(q.dequeue());
+        System.out.println(q.isEmpty());
     }
 }
+//class reverse_queue{
+//    public Queue rev(Queue q) {
+//        Queue q1 = new LinkedList();
+//
+//    }
+
+//    public static void main(String[] args) {
+//    }
+//}
