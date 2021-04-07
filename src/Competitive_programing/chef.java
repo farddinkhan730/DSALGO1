@@ -60,9 +60,27 @@ class chef_die{
         int t=sc.nextInt();
         while (t-->0){
             int n=sc.nextInt();
-            int result=(2+3+4+5+6)*n;
-            System.out.println(result);
-            StringBuffer s=new StringBuffer();
+            if (n==1)
+                System.out.println(20);
+            else if (n==2)
+                System.out.println(36);
+            else if (n==3)
+            System.out.println(51);
+            else if(n==4)
+                System.out.println(60);
+        else {
+                int rem = n % 4;
+                int ans = ((n - rem) / 4) * 44;
+                if (rem == 0) {
+                    ans += 16;
+                } else if (rem == 1)
+                    ans += 32;
+                else if (rem == 2)
+                    ans += 44;
+                else if (rem == 3)
+                    ans += 55;
+                System.out.println(ans);
+            }
 
         }
     }
