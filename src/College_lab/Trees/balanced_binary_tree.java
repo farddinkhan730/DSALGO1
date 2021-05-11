@@ -1,7 +1,4 @@
 package College_lab.Trees;
-
-
-
 // complexity is o(n^2)
 public class balanced_binary_tree {
     public int height(TreeNode root){

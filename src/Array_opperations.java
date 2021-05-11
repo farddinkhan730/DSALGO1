@@ -793,4 +793,23 @@ class G{
                     "anagram of each other");
     }
 }
+class union{
+    public static void union(int a[],int a1[]){
+        HashSet<Integer> h=new HashSet<>();
+        h.add(a[0]);
+        for (int i = 1; i <a.length ; i++) {
+            h.add(a[i]);
+        }
+        for (int i = 0; i < a1.length; i++) {
+            h.add(a1[i]);
+        }
+        System.out.println(h.size());
+    }
+    public static void main(String[] args) {
+        int a[]={85, 25, 1 ,32, 54 ,6};
+        int a1[]={85,2};
+        union(a,a1);
+
+    }
+}
 

@@ -114,7 +114,7 @@ public class tree {
             }
         }
     }
-    public void insert(TreeNode root ,int key){
+    public void insert_new_node(TreeNode root ,int key){
         Queue<TreeNode> q=new LinkedList<>();
         q.add(root);
         while (!q.isEmpty()){
@@ -137,11 +137,11 @@ public class tree {
     }
     public static void main(String[] args) {
         tree obj=new tree();
-        obj.root=new TreeNode(1);
-        obj.root.left=new TreeNode(2);
-        obj.root.right=new TreeNode(3);
-        obj.root.left.left=new TreeNode(4);
-        obj.root.right.right=new TreeNode(5);
+        obj.root=new TreeNode(5);
+        obj.root.left=new TreeNode(4);
+        obj.root.right=new TreeNode(8);
+        obj.root.left.left=new TreeNode(1);
+        obj.root.left.right=new TreeNode(2);
 //        obj.pre_order(obj.root);
 //        TreeNode n=obj.mirror(obj.root);
 //        System.out.println("root " +n.data);
@@ -151,10 +151,10 @@ public class tree {
 //        System.out.println("root right right "+ n.right.right.data);
 //        obj.NOT_Siblings(obj.root);
 //        obj.pre_order(obj.root);
-//        obj.print_the_level_order_binary_tree(obj.root);
+        obj.print_the_level_order_binary_tree(obj.root);
 //        obj.post_order(obj.root);
-        obj.level_order();
-        obj.insert(obj.root, 46);
-        obj.level_order();
+//        obj.level_order();
+//        obj.insert(obj.root, 46);
+//        obj.level_order();
     }
 }

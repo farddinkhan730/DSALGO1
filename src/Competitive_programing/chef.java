@@ -85,3 +85,66 @@ class chef_die{
         }
     }
 }
+class Codechef
+{
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        // your code goes here
+        Scanner sc=new Scanner(System.in);
+        int x=sc.nextInt();
+        double y=sc.nextDouble();
+        double temp=x;
+        System.out.println((x+y));
+        System.out.println(temp);
+        temp=temp+0.50;
+        System.out.println(temp);
+        if(x%5==0){
+            if(x>y){
+                System.out.println(y);
+            }
+            else{
+                double result=((y-temp)*100.0)/100.0;
+                System.out.println(result);
+            }
+        }
+        else{
+            System.out.println(y);
+        }
+    }
+}
+class Codechef1
+{
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        // your code goes here
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        int c=sc.nextInt();
+        if(a>b && a>c){
+            if(a>b && b>c){
+                System.out.println(b);
+            }
+            else if(a>c && c>b){
+                System.out.println(c);
+            }
+        }
+        else if(b>a && b>c){
+            if(b>a && a>c){
+                System.out.println(a);
+            }
+            else if(b>c && c>a){
+                System.out.println(c);
+            }
+
+        }
+        else if(c>a && c>b){
+            if(c>a && a>b){
+                System.out.println(a);
+            }
+            if(c>b && b>a){
+                System.out.println(b);
+            }
+        }
+    }
+}
