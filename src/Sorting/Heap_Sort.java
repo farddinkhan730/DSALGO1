@@ -1,9 +1,6 @@
 package Sorting;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class Heap_Sort {
@@ -50,50 +47,151 @@ public class Heap_Sort {
         }
     }
 }
-class mncv{
-    public static void main(String[] args) {
+class Solution1
+{
+    //Function to count subarrays with 1s and 0s.
+    static int countSubarrWithEqualZeroAndOne(int arr[], int n)
+    {
+        // add your code here
+        int ans=0;
+        HashMap<Integer,Integer> hs=new HashMap<Integer,Integer>();
+        hs.put(0,1);
+        int sum=0;
+        for(int v:arr){
+            if(v == 0){
+                sum+= -1;
+                System.out.println(sum);
 
-        String s1="Adfs";
-        HashSet<Character> h=new HashSet<>();
-        for(char i:s1.toCharArray()){
-            h.add(i);
+            }
+            else{
+                sum+= +1;
+            }
+            if(hs.containsKey(sum)){
+                ans+=hs.get(sum);
+                System.out.println(ans);
+                hs.put(sum,hs.get(sum)+1);
+            }
+            else{
+                hs.put(sum,1);
+            }
         }
-        Object[] a =h.toArray();
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+        return ans;
+
+    }
+
+    public static void main(String[] args) {
+        int a[]={0 ,0 ,1 ,0 ,1 ,0 ,1 ,1 ,0, 0 ,1 ,1 ,1};
+        int an=countSubarrWithEqualZeroAndOne(a,a.length);
+        System.out.println(an);
+    }
+}
+
+class msn{
+    public static void main(String[] args) {
+        int sum= -1;
+        System.out.println(sum);
+    }
+}
+class
+Sorting_Elements_of_an_Array_by_Frequency{
+    public static void sort(int a[], int n){
+        ArrayList<Integer> al=new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            int count=0;
+            if(al.contains(a[i])) {
+                int frq = Collections.frequency(al, a[i]);
+//                al.add();
+            }
+
         }
 
     }
 }
+class Node{
+    int data;
+    int freq;
+    Node head;
+    Node next;
+    Node(int data,int freq){
+        this.data=data;
+        this.freq=freq;
+        head=next=null;
+    }
+}
+class sorting_element {
+    Node head;
+    public static void sort(int a[], int n){
+        Node temp=getfrequency(a,n);
+        int m=min(temp);
+        System.out.println(" m " + m);
 
-class str{
-    public static boolean sum(String s){
-        char[] c=s.toCharArray();
-        boolean b=false;
-        if(s.length()%2!=0){
-            int mid=s.length()/2;
-            int lsum=0;
-            for(int i=0;i<mid;i++){
-                lsum+=c[i];
-            }
-            int rsum=0;
-            for (int i = mid+1; i <c.length ; i++) {
-                rsum+=c[i];
-            }
-            if(lsum==rsum){
-                b=true;
-            }
-
+    }
+    public  void add(int data,int freq){
+        if(head==null){
+            head=new Node(data,freq);
+            return;
         }
-        return b;
+        Node temp=head;
+        while (temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=new Node(data,freq);
+
+    }
+    public static void ptintlm(Node head){
+        while (head!=null){
+            System.out.println(head.data +" freq "+ head.freq);
+            head= head.next;
+        }
+    }
+    public static Node getfrequency(int a[],int n){
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        HashSet<Integer> hset=new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            hset.add(a[i]);
+            if (hs.containsKey(a[i])) {
+                hs.put(a[i],hs.get(a[i]) + 1);
+
+            }
+            else {
+                hs.put(a[i],1);
+            }
+        }
+        Object[] arr =hset.toArray();
+        sorting_element ll = new sorting_element();
+        for (int i = 0; i < hs.size(); i++) {
+            ll.add(convrsion(arr[i]), hs.get(convrsion(arr[i])));
+        }
+        return ll.head;
+    }
+    public static int min(Node head){
+        Node temp=head;
+        int min=Integer.MAX_VALUE;
+        while (temp!=null){
+            if(min>temp.freq){
+                min=temp.freq;
+            }
+            temp=temp.next;
+        }
+        int variable=0;
+        Node temp1=head;
+        while (temp1!=null){
+            if(temp1.freq==min){
+                 variable= temp1.data;
+                 return variable;
+            }
+        }
+        return min;
+    }
+
+    private static int convrsion(Object integer) {
+        int mn=(int) integer;
+        return mn;
     }
 
     public static void main(String[] args) {
-        String s="12345";
-        boolean m=sum(s);
-        if(m){
-            System.out.println(1);
-        }
-        else System.out.println(0);
+       int N = 5;
+        int A[] = {5,5,4,6,4};
+        sort(A,N);
     }
 }
