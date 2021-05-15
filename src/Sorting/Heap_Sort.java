@@ -22,11 +22,11 @@ public class Heap_Sort {
         int l = 2 * i + 1; // left = 2*i + 1
         int r = 2 * i + 2; // right = 2*i + 2
         // If left child is larger than root
-        if (l < n && arr[l] > arr[largest])
+        if (l < n && arr[l] < arr[largest])
             largest = l;
 
         // If right child is larger than largest so far
-        if (r < n && arr[r] > arr[largest])
+        if (r < n && arr[r] < arr[largest])
             largest = r;
 
         // If largest is not root
