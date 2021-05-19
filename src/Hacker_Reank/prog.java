@@ -413,3 +413,65 @@ class ClimbingTheLeaderboard {
     }
 
 }
+
+class subsetxor{
+    public static void subset(int []nums){
+        int subset[]=new int[(int) Math.pow(2,nums.length)];
+        int i=0;
+        subset[0]=0;
+        for( i=1;i<nums.length+1;i++){
+            subset[i]=nums[i-1];
+        }
+        if(nums.length>2) {
+
+            for (int k = 0; k < nums.length; k++) {
+                for (int j = k + 1; j < nums.length; j++) {
+                    subset[i++] = nums[k] ^ nums[j];
+                }
+            }
+        }
+        int xor=nums[0];
+        for (int j = 1; j < nums.length ; j++) {
+            xor=xor ^ nums[j];
+        }
+        subset[i++]=xor;
+        int sum=0;
+        for (int j = 0; j < subset.length; j++) {
+            System.out.println(subset[j]);
+            sum+=subset[j];
+        }
+        System.out.println(sum+" " + subset.length);
+
+    }
+
+    public static void main(String[] args) {
+        int n []={3,4,5,6,7,8};
+        subset(n);
+    }
+}
+class K_element_in_matrix {
+    public static int kthSmallest(int[][] mat, int n, int k) {
+
+        ArrayList<Integer> ak=new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                ak.add(mat[i][j]);
+            }
+        }
+        Collections.sort(ak);
+        return ak.get(k-1);
+
+    }
+
+
+    public static void main(String[] args) {
+        int n=4;
+        int mat[][]={{16, 28, 60, 64},
+                {22, 41, 63, 91},
+                {27, 50, 87, 93},
+                {36, 78, 87, 94 }};
+        int k=3;
+        System.out.println(kthSmallest(mat,n,k));
+    }
+}
