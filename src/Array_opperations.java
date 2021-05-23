@@ -810,6 +810,79 @@ class union{
         int a1[]={85,2};
         union(a,a1);
 
+
     }
 }
+class sdcda{
+    public static void main(String[]args){
 
+        StringBuffer s1=new StringBuffer("123");
+        s1.reverse();
+        Long i=4545444l;
+        String.valueOf(i);
+        System.out.println( );
+        long l=5456l;
+        int m=(int)l;
+    }
+}
+class ListNode {
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        Stack<Integer> s = new Stack<>();
+        Stack<Integer> s1=new Stack<>();
+        ListNode temp1 = l1, temp2 = l2;
+
+        while (temp1 != null || temp2 != null) {
+            if (temp1 != null) {
+                s.push(temp1.val);
+            }
+            if (temp2 != null) {
+                s.push(temp2.val);
+            }
+        }
+        int carry=0;
+        ListNode root=new ListNode();
+        while (!s.isEmpty()) {
+            int sum = s.pop() + s.pop();
+
+            if (sum > 9) {
+                carry=sum%10;
+                sum = sum%10;
+            }
+            else {
+                sum=sum+carry;
+                if (sum > 9) {
+                    carry=sum%10;
+                    sum = sum%10;
+                }
+                else {
+                    carry=0;
+                }
+
+            }
+            s.add(sum);
+        }
+        while (!s1.isEmpty()) {
+            if (root == null) {
+                root = new ListNode(s1.pop());
+                root=root.next;
+            }
+            else {
+                root=new ListNode(s1.pop());
+                root=root.next;
+            }
+        }
+        return root;
+    }
+
+
+
+
+    }
+}
