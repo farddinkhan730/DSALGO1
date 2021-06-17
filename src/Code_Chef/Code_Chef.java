@@ -70,6 +70,39 @@ class COMM3{
         }
     }
 }
+class TWOSTR{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        sc.nextLine();
+        while (t-->0) {
+            String x = sc.next();
+//            System.out.println(x);
+            String y = sc.next();
+//            System.out.println(y);
+            for (int i = 0; i < x.length(); i++) {
+                if (x.charAt(i) == y.charAt(i)) {
+                    System.out.println(x + " And" + y);
+                    continue;
+                } else {
+                    if (x.charAt(i) == '?' && y.charAt(i)!='?') {
+                        System.out.println(x);
+                       x= x.replace(x.charAt(i), y.charAt(i));
+                        System.out.println("REpla "+ x);
+                    } else if (y.charAt(i) == '?' && x.charAt(i)!='?') {
+                        y=y.replace(y.charAt(i), x.charAt(i));
+                    } else {
+                        System.out.println("NO");
+                        break;
+                    }
+                }
+            }
+            if(x.equals(y)){
+                System.out.println("YES");
+            }
+        }
+    }
+}
 class CHN09{
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
