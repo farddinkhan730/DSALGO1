@@ -3,9 +3,7 @@ package stack;
 infix expression to postfix*/
 // Note that here we use Stack class for Stack operations
 
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
 class Test
 {
@@ -157,5 +155,28 @@ class MainClass
     {
         int nDisks = 3;
         doTowers(nDisks, 'A', 'B', 'C');
+    }
+}
+class infix_to_postfix{
+    public static int presedence(char c){
+        switch (c){
+            case  '^' : return 1;
+            case '*':
+            case '/': return 2;
+            case '-':
+            case '+': return 3;
+        }
+        return -1;
+    }
+//    public String infixtopost(String str){
+//        for(int i=0;i<str.length();i++){
+//            if(str.charAt(i)=='('){
+//
+//            }
+//        }
+//    }
+
+    public static void main(String[] args) {
+
     }
 }
