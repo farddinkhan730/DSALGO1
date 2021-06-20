@@ -24,7 +24,7 @@ public class Two_array_of_String_find_common_value {
     }
 }
 
-class Solution {
+class Solution145 {
     public static long sum(long a[]){
 
         Arrays.sort(a);
@@ -81,5 +81,70 @@ class  smallernumberleft{
         int a[]={1,5,0,3,4,5};
         List<Integer> al=leftSmaller(a.length,a);
         System.out.println(al);
+    }
+}
+
+class Solution {
+    String reverseEqn(String S)
+    {
+        // your code here
+        int i=S.length()-1;
+
+        while (i>0 && S.charAt(i-1)==' ')
+        {
+            i--;
+        }
+        String ste="";
+        while(i>0){
+            int j=i;
+            while(i!='+' || i!='-' || i!='*' || i!='/'){
+                i--;
+            }
+            if (ste.equals("")){
+                ste=S.substring(i+1,j+1);
+                i--;
+            }
+            else {
+                ste=S.substring(i+1,j+1);
+                i--;
+            }
+
+        }
+        return S;
+
+//        Stack<Character> sa=new Stack<>();
+//
+//        for (int i = 0; i <S.length() ; i++) {
+//            sa.add(S.charAt(i));
+//        }
+//        while (!sa.isEmpty()) {
+//            S += sa.pop();
+//        }
+//        return S;
+
+    }
+    void immediateSmaller(int a[], int n) {
+        // code here
+//        int i=0;
+//        Stack<Integer> s=new Stack<>();
+//        for (int i = 0; i <n ; i++) {
+//            s.push(a[i])
+//        }
+//        while(i<n){
+//            if(i==n-1) {
+//                a[n-1]=-1;
+//                break;
+//            }
+//            if(a[i]>a[i+1]){
+//
+//                a[i]=a[i+1];
+//            }
+//            else{
+//
+//                a[i]=-1;
+//            }
+//            i++;
+//
+//        }
     }
 }
