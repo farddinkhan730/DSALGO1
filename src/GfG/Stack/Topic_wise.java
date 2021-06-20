@@ -209,3 +209,32 @@ class Valid_Substring{
         System.out.println(valid_sub(s));
     }
 }
+class remove_outermost_paranthesis{
+    public static String remove(String s) {
+
+        Stack stack = new Stack();
+        String str="";
+        for (int i = 0; i < s.length() - 1; i++) {
+
+            if (s.charAt(i) == '(') {
+                int j = i + 1;
+                stack.push(s.charAt(i));
+                if(j < s.length() && s.charAt(j) == ')') {
+                    str+=s.charAt(i);
+                    str+=s.charAt(j);
+                    if (!s.isEmpty()) {
+                        stack.pop();
+                    }
+                }
+
+            }
+
+        }
+        return str;
+    }
+
+    public static void main(String[] args) {
+        String s = "(()())()(";
+        System.out.println(remove(s));
+    }
+}
