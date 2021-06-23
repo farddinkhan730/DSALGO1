@@ -1,6 +1,7 @@
 package Linked_list;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -534,6 +535,19 @@ class frwd_rvrs{
              next=null;
          }
      }
+     public static boolean search(Node head,int x){
+
+         boolean check=false;
+         Node temp=head;
+         while(temp!=null){
+             if(temp.data==x){
+                 check=true;
+                 return check;
+             }
+             temp=temp.next;
+         }
+         return check;
+     }
      public void print(Node head){
          if(head!=null) {
              System.out.println(head.data);
@@ -559,17 +573,58 @@ class frwd_rvrs{
         head=newd;
     }
 
-    public static void main(String[] args) {
+    void splitList(frwd_rvrs list)
+    {
+        Node head1=new Node(0);
+        Node head2=head1;
+        while (list.head.next!=list.head){
+            head1.next= list.head;
+            System.out.print(list.head.data+" ");
+            head1=head1.next;
+            list.head= list.head.next;
+        }
+        head1.next= list.head;
+        head1.next.next=null;
+
+        Node slow=head2 , fast=head2;
+
+        while (fast!=null && fast.next!=null){
+
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+
+        Node headn=slow.next;
+        slow.next=head2;
+        while (headn!=null){
+            System.out.println(headn.data+" ");
+            headn =headn.next;
+        }
+
+
+         }
+
+        public static void main(String[] args) {
         frwd_rvrs ls=new frwd_rvrs();
-         Node head=null;
+
 //        head =ls.insert(head,456);
 //        head=ls.insert(head,44);
 //        head=ls.insert(head,78);
-        ls.print(ls.head);
+//        ls.print(ls.head);
         ls.push(42);
         ls.push(32);
         ls.push(234);
-        ls.print(ls.head);
+        ls.push(54);
+        ls.push(55);
+        ls.push(58);
+            Node head= ls.head;
+        while (head.next!=null){
+            head=head.next;
+        }
+        head.next=head;
+        ls.splitList(ls);
+
+
 
 //        Node km=ls.head;
 //        while(km!=null){
@@ -785,6 +840,83 @@ class Solution4{
             new_node.next.next=null;
         }
         return temp;
+
+    }
+}
+class arraylist{
+    public static void main(String[] args) {
+
+        ArrayList<Integer> al=new ArrayList<>();
+        al.add(2);
+        al.add(22);
+        al.add(45);
+        al.add(23);
+        System.out.println(al);
+        al.add(1,2323);
+        System.out.println(al);
+        boolean b=true;
+        int j=0;
+        
+        for (int i = 0; i <al.size() ; i++) {
+            if(b){
+
+            }
+            else {
+                al.add(i,al.get((al.size()-1)-j++));
+//                System.out.println(i +"  "+ al.get((al.size()-1)-(i-1)));
+            }
+            b=!b;
+//            System.out.println(b);
+        }
+        System.out.println(al);
+
+
+    }
+}
+ class Solution545
+{
+
+    public static Node addOne(Node head)
+    {
+        //code here.
+        Node temp1=head;
+        Node ans=null;
+        while(temp1.next!=null)
+        {
+            if(temp1.data!=9){
+                ans=temp1;
+            }
+            temp1=temp1.next;
+
+        }
+        if(temp1.data!=9){
+            ans=temp1;
+
+        }
+
+        if(ans ==null){
+            Node temp=head;
+            while(temp!=null){
+                temp.data=0;
+                temp=temp.next;
+
+            }
+            Node newnode=new Node(1);
+            newnode.next=head;
+            head=newnode;
+
+        }
+        else{
+            ans.data++;
+            ans=ans.next;
+
+            while(ans!=null){
+                ans.data=0;
+                ans=ans.next;
+
+            }
+        }
+        return head;
 
     }
 }

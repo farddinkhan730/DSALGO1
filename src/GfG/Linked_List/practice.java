@@ -62,15 +62,66 @@ public class practice {
             System.out.print(head.data+" ");
             head=head.next;
         }
+        System.out.println();
+    }
+    static Node addNode(Node new_list,Node node1){
+
+        Node temp=node1;
+        //temp.next=null;
+        temp.next=new_list;
+        new_list=temp;
+
+        return new_list;
+
+    }
+    static Node mergeResult(Node node1, Node node2)
+    {
+        // Your code here
+        Node new_list=null;
+        while(node1!=null && node2!=null){
+
+            if(node1.data<node2.data){
+                new_list=addNode(new_list,node1);
+
+            }
+            else{
+                new_list=addNode(new_list,node2);
+            }
+            node1=node1.next;
+            node2=node2.next;
+
+            int n= new_list.data;
+            if(new_list.next!=null) {
+                int n1 = new_list.next.data;
+            }
+
+        }
+        while(node1!=null){
+            new_list=addNode(new_list,node1);
+            node1=node1.next;
+        }
+        while(node2!=null){
+            new_list=addNode(new_list,node2);
+            node2=node2.next;
+        }
+        return new_list;
     }
     public static void main(String[] args) {
         practice ls=new practice();
+        practice ls1=new practice();
 //        Node head=new Node(343);
-        ls.insertion(2);
-        ls.insertion(34);
-        ls.insertion(21);
+        ls.insertion(5);
+        ls.insertion(10);
+        ls.insertion(15);
+        ls.insertion(40);
+        ls1.insertion(2);
+        ls1.insertion(3);
+        ls1.insertion(20);
 //        nknode(ls.head, 2);
+        Node h=mergeResult(ls.head,ls1.head);
+        print(h);
         print(ls.head);
+        print(ls1.head);
     }
 
 }
@@ -159,6 +210,21 @@ class Solution
         System.out.println(root.data);
         preorde(root.left);
         preorde(root.right);
+    }
+    int compare(Node node1, Node node2)
+    {
+        //Your code here
+        String s1="";
+        String s2="";
+        while(node1!=null){
+            s1+=node1.data;
+            node1=node1.next;
+        }
+        while (node2!=null){
+            s2+=node2.data;
+            node2=node2.next;
+        }
+        return s1.compareTo(s2);
     }
 
     public static void main(String[] args) {
