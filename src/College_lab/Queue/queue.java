@@ -18,9 +18,7 @@ public class queue {
             return a.length;
         }
         public boolean isEmpty(){
-            return ((front==-1 && rear==-1) || (front==a.length)
-//                    ||(front==rear)
-            );
+            return ((front==-1 && rear==-1) || (front==a.length));
         }
         public boolean isFull(){
             if(front==a.length)
@@ -75,27 +73,12 @@ public class queue {
         queue q = new queue(5);
         System.out.println(q.isEmpty());
         q.enqueue(45);
-//        q.enqueue(78);
         q.enqueue(78);
-       // System.out.println(q.size());
-        //System.out.println(q.isEmpty());
-//        for (int i = 0; i < q.size(); i++) {
-          //  System.out.println(q.dequeue());
-        //System.out.println(q.dequeue());
-        //System.out.println(q.peekInQueue());
-        //System.out.println(q.size());
-        //System.out.println(q.isFull());
-//        q.traverse();
-        //q.deleteQueue();
-//        q.dequeue()
-//        ;
         q.traverse();
         System.out.println(q.peekInQueue());
         q.dequeue();
         q.traverse();
-//        q.dequeue()
 
-//        }
     }
 }
 // Non primitve data type class use for non primitve queue

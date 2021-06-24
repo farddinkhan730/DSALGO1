@@ -1,23 +1,35 @@
 package College_lab.Trees;
 
+import java.security.PublicKey;
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.concurrent.BlockingDeque;
 
-class Bst_Node{
-    int data;
-    Bst_Node left;
-    Bst_Node right;
-
-    public Bst_Node(int data) {
-        this.data = data;
-        left=right = null;
-    }
-}
+//class Bst_Node{
+//    int data;
+//    Bst_Node left;
+//    Bst_Node right;
+//
+//    public Bst_Node(int data) {
+//        this.data = data;
+//        left=right = null;
+//    }
+//}
 
 public class BST {
+    class Bst_Node{
+        int data;
+        Bst_Node left;
+        Bst_Node right;
 
-    public static Bst_Node insert(Bst_Node root,Bst_Node new_Node){
+        public Bst_Node(int data) {
+            this.data = data;
+            left=right = null;
+        }
+    }
+         Bst_Node root;
+    public  Bst_Node insert(int x){
+        Bst_Node new_Node=new Bst_Node(x);
         if(root==null){
             root=new_Node;
             return root;
@@ -40,6 +52,10 @@ public class BST {
         }
         return root;
     }
+
+    private void insert(Bst_Node right, Bst_Node new_node) {
+    }
+
     public static boolean search(Bst_Node root,int key){
         if(root==null){
             return false;
@@ -80,29 +96,48 @@ public class BST {
         }
         return root;
     }
+    public static void preorder(Bst_Node root){
+        if(root==null){
+            return;
+        }
+        System.out.print(root.data+" ");
+        preorder(root.left);
+        preorder(root.right);
 
+
+
+    }
+    public static void postorder(Bst_Node root){
+        if(root==null){
+            return;
+        }
+
+        preorder(root.left);
+        preorder(root.right);
+        System.out.print(root.data+" ");
+
+
+    }
+    public static void Inorder(Bst_Node root){
+        if(root==null){
+            return;
+        }
+
+        preorder(root.left);
+        System.out.print(root.data+" ");
+        preorder(root.right);
+
+
+
+    }
     public static void main(String[] args) {
-//        Bst_Node root=new Bst_Node(5);
-//        root.left=new Bst_Node(3);
-//        root.left.left=new Bst_Node(2);
-//        root.left.left.left=new Bst_Node(1);
-//        root.left.right=new Bst_Node(4);
-//        root.right=new Bst_Node(7);
-//        root.right.right=new Bst_Node(8);
-//        root.right.left=new Bst_Node(6);
-//        System.out.println(search(root,4));
-        Bst_Node root1=insert(null,new Bst_Node(8));
-        Bst_Node r2=insert(root1,new Bst_Node(4));
-        Bst_Node r3=insert(r2,new Bst_Node(9));
-        Bst_Node r4=insert(r3,new Bst_Node(1));
-        Bst_Node r5=insert(r4,new Bst_Node(2));
-        Bst_Node r6=insert(r5,new Bst_Node(3));
-        Bst_Node r7=insert(r6,new Bst_Node(6));
-        Bst_Node r8=insert(r7,new Bst_Node(5));
-//        System.out.println(search(root1,99));
-        System.out.println(LCA(root1,1,2).data);
-
-
+        BST tree=new BST();
+        tree.insert(34);
+        tree.insert(2);
+        tree.insert(67);
+        preorder(tree.root);
+        postorder(tree.root);
+        Inorder(tree.root);
     }
 }
 class lca{

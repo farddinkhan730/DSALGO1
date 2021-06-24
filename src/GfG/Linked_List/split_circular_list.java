@@ -208,3 +208,113 @@ class GfG {
 
     }
 }
+class merge_sortlinked_list{
+    static class Node{
+        Node next;
+        int data;
+        Node(int d){
+            data=d;
+            next=null;
+        }
+    }
+    Node head;
+    static Node mergeSort(Node head)
+    {
+        // add your code here
+        Node temp=head;
+        if(temp.next==null) return temp;
+        Node slow=head,fast=head.next;
+        Node left=slow;
+
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        Node right=slow.next;
+        slow.next=null;
+        // Node ll=new Node(0);
+        // Node mn=ll.next;
+        left=mergeSort(left);
+        right=mergeSort(right);
+        Node mn=merge(left,right);
+
+//        print(mn);
+        return mn;
+
+    }
+    static Node merge(Node l1,Node l2){
+
+        Node ll=new Node(0);
+        Node merger=ll;
+
+        while(l1!=null && l2!=null){
+
+            // if(l1!=null && l2!=null){
+
+            if(l1.data<l2.data){
+                ll.next=l1;
+                l1=l1.next;
+            }
+            else{
+                ll.next=l2;
+                l2=l2.next;
+            }
+            ll=ll.next;
+        }
+        // }
+        while(l1!=null ){
+            ll.next=l1;
+            ll=ll.next;
+            l1=l1.next;
+        }
+
+        while(l2!=null ){
+            ll.next=l2;
+            ll=ll.next;
+            l2=l2.next;
+        }
+
+        return merger.next;
+
+    }
+    public void insert(int x){
+       Node new_node=new Node(x);
+        if(head==null){
+            head=new_node;
+            return;
+        }
+       Node  temp=head;
+        while (temp.next!=null){
+            temp= temp.next;
+        }
+        temp.next=new_node;
+
+    }
+    public static void print(Node temp){
+        Node h=temp;
+        while (h!=null){
+            System.out.print(h.data+" ");
+            h=h.next;
+        }
+//        System.out.print(h.data+" ");
+//        System.out.println();
+    }
+    public static void main(String[] args) {
+        merge_sortlinked_list ls=new merge_sortlinked_list();
+        ls.insert(2);
+        ls.insert(23);
+        ls.insert(32);
+        ls.insert(1);
+        ls.insert(55);
+        ls.insert(3);
+        ls.insert(66);
+//        ls.insert();
+//        ls.insert();
+//        ls.insert();
+        Node m=mergeSort(ls.head);
+        print(m);
+    }
+}
+
+
+

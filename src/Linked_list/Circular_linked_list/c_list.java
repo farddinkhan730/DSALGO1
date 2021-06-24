@@ -43,7 +43,8 @@ public class c_list {
         return head_ref;
     }
     public static void main(String[] args) {
-        Node head=null;
+        c_list ls=new c_list();
+        Node head= ls.head;
         head=push(head,12);
         head=push(head,56);
         head=push(head,2);
