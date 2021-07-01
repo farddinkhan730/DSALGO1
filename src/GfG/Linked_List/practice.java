@@ -227,6 +227,7 @@ class Solution
         return s1.compareTo(s2);
     }
 
+
     public static void main(String[] args) {
         Solution al=new Solution();
         al.insertion(1);

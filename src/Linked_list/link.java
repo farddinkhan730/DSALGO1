@@ -71,47 +71,97 @@ public class link {
 
 
     }
+    public static Node reverseBetween(Node node, int m, int n)
+    {
+        Node temp=node;
+        int i=1;
+        for(i=1;i<m;i++){
+            temp=temp.next;
+        }
+        Node cur=temp;
+        Node prev=null,nex=null;
+        while(cur!=null  && i!=(n+1)){
+            nex=cur.next;
+            cur.next=prev;
+            prev=cur;
+            cur=nex;
+            i++;
+        }
+        cur=prev;
+//        while (cur!=null){
+//            System.out.println(cur.data);
+//            cur=cur.next;
+//        }
+        Node tm=node;
+        while(tm.next!=null){
+            System.out.println(tm.data);
+            tm=tm.next;
+        }
+            tm.next=cur;
+    //        while(tm!=null){
+    //            System.out.println(tm.data);
+    //            tm=tm.next;
+    //        }
+//        t.next=nex;
+        return node;
+    }
 
     public static void main(String[] args) {
         link1 obj1 = new link1();
-        obj1.head = new Node(2);
-        Node second = new Node(3);
-        Node third = new Node(1);
-        obj1.head.next = second;
-        second.next = third;
-        Node n = obj1.head;
-        while (n != null) {
-            System.out.print(n.data+" -> ");
-            n = n.next;
-        }
-        //add node at first
-        obj1.push(56);
-        Node v = obj1.head;
-        System.out.println();
-        while (v != null) {
-            System.out.print(v.data+" -> ");
-            v = v.next;
-        }
-        System.out.println("null");
-        // add node after a given node
-        obj1.insert_after(obj1.head.next.next,34);
-        Node N=obj1.head;
-        System.out.println();
-        while(N!=null){
-            System.out.print(N.data+" ->");
-            N=N.next;
-        }
-        System.out.println("null");
+        obj1.append(1);
+        obj1.append(2);
+        obj1.append(3);
+        obj1.append(4);
+        obj1.append(5);
+        obj1.append(6);
+        obj1.append(7);
+        obj1.append(8);
+        obj1.append(9);
+        obj1.append(10);
 
-        // add node at the end
-        obj1.append(99);
-        Node N1=obj1.head;
-        System.out.println();
-        while(N1!=null){
-            System.out.print(N1.data+" ->");
-            N1=N1.next;
-        }
-        System.out.println("null");
+        Node m=reverseBetween(obj1.head, 2,4);
+//        while (m!=null){
+//            System.out.println(m.data);
+//            m=m.next;
+//        }
+//        obj1.head = new Node(2);
+//        Node second = new Node(3);
+//        Node third = new Node(1);
+//        obj1.head.next = second;
+//        second.next = third;
+//        Node n = obj1.head;
+//        while (n != null) {
+//            System.out.print(n.data+" -> ");
+//            n = n.next;
+//        }
+//        //add node at first
+//        obj1.push(56);
+//        Node v = obj1.head;
+//        System.out.println();
+//        while (v != null) {
+//            System.out.print(v.data+" -> ");
+//            v = v.next;
+//        }
+//        System.out.println("null");
+//        // add node after a given node
+//        obj1.insert_after(obj1.head.next.next,34);
+//        Node N=obj1.head;
+//        System.out.println();
+//        while(N!=null){
+//            System.out.print(N.data+" ->");
+//            N=N.next;
+//        }
+//        System.out.println("null");
+//
+//        // add node at the end
+//        obj1.append(99);
+//        Node N1=obj1.head;
+//        System.out.println();
+//        while(N1!=null){
+//            System.out.print(N1.data+" ->");
+//            N1=N1.next;
+//        }
+//        System.out.println("null");
 
     }
 }
@@ -919,4 +969,54 @@ class arraylist{
         return head;
 
     }
+}
+class Solution4578
+{
+
+
+        public String FirstNonRepeating(String A) {
+            // code here
+            if (A.length() < 0) {
+                return A;
+            }
+
+            HashMap<Character, Integer> hs = new HashMap<>();
+            for (int i = 1; i < A.length(); i++) {
+                if (hs.containsKey(A.charAt(i))) {
+                    hs.put(A.charAt(i),hs.get(A.charAt(i))+1);
+                }
+                else {
+                    hs.put(A.charAt(i),1);
+                }
+            }
+
+            String  s="";
+            int m=0;
+            for (int i = 0; i <A.length() ; i++) {
+                if(hs.get(A.charAt(i))==1) {
+                    if (s.isEmpty()) {
+                        s += A.charAt(i);
+                        m=i;
+                    }
+                }
+            }
+            HashSet<Character> hs1=new HashSet<>();
+            hs1.add(A.charAt(0));
+            String str="";
+            for (int i = 0; i < A.length(); i++) {
+                if(i>=m){
+                    str+=s;
+                }
+                else {
+                    if(hs1.contains(A.charAt(i))){
+                        str+='#';
+                    }
+                    else {
+                        str += A.charAt(i);
+                    }
+                }
+            }
+            return str;
+
+        }
 }
