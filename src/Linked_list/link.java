@@ -1,10 +1,7 @@
 package Linked_list;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Scanner;
+import java.util.*;
 
 public class link {
     Node head;
@@ -1019,4 +1016,10 @@ class Solution4578
             return str;
 
         }
+}
+class mnb{
+    public static void main(String[] args) {
+        System.out.println(19%10);
+
+    }
 }

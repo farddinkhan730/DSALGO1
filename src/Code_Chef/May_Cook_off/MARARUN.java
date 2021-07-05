@@ -1,5 +1,6 @@
 package Code_Chef.May_Cook_off;
 
+import java.security.PublicKey;
 import java.util.Scanner;
 
 class TANDJ1{
@@ -113,6 +114,64 @@ public class MARARUN {
             }
             else {
                 System.out.println(0);
+            }
+        }
+    }
+}
+
+class mnk{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while (t-->0){
+            int d=sc.nextInt();
+            int x=sc.nextInt();
+            int y=sc.nextInt();
+            int z=sc.nextInt();
+            int r1=x*7;
+            int r3=y*d+z*(7-d);
+            System.out.println(Math.max(r1,r3));
+        }
+    }
+}
+class Relativity{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        long t=sc.nextInt();
+        while (t-->0){
+            int g=sc.nextInt();
+            int c=sc.nextInt();
+            long h=(c*c)/(2*g);
+            System.out.println(h);
+        }
+    }
+}
+class XxoOr{
+    public static void zero(int a){
+        if(a==0){
+            return;
+        }
+        int p=0;
+        while (a!=0){
+            a=a^(int) Math.pow(2,p);
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while (t-->0){
+            int n=sc.nextInt();
+            int k=sc.nextInt();
+            int a[]=new int[n];
+            for (int i = 0; i <n ; i++) {
+                a[i]=sc.nextInt();
+            }
+            for (int i = 0; i <n ; i++) {
+                int j=k;
+                int m=i;
+                while (j-->0){
+                    zero(a[m++]);
+                }
             }
         }
     }
