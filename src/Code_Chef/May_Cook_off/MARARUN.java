@@ -1,6 +1,8 @@
 package Code_Chef.May_Cook_off;
 
 import java.security.PublicKey;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 class TANDJ1{
@@ -158,21 +160,26 @@ class XxoOr{
     }
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        int t=sc.nextInt();
-        while (t-->0){
-            int n=sc.nextInt();
-            int k=sc.nextInt();
-            int a[]=new int[n];
-            for (int i = 0; i <n ; i++) {
-                a[i]=sc.nextInt();
-            }
-            for (int i = 0; i <n ; i++) {
-                int j=k;
-                int m=i;
-                while (j-->0){
-                    zero(a[m++]);
-                }
-            }
-        }
+//        int t=sc.nextInt();
+        HashSet<Integer> al=new HashSet<>();
+        al.add(34);
+        al.add(56);
+//        al.remove(34);
+        System.out.println(al);
+//        while (t-->0){
+//            int n=sc.nextInt();
+//            int k=sc.nextInt();
+//            int a[]=new int[n];
+//            for (int i = 0; i <n ; i++) {
+//                a[i]=sc.nextInt();
+//            }
+//            for (int i = 0; i <n ; i++) {
+//                int j=k;
+//                int m=i;
+//                while (j-->0){
+//                    zero(a[m++]);
+//                }
+//            }
+//        }
     }
 }

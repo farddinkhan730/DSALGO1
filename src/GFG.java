@@ -212,3 +212,89 @@ class GFG233
 }
 
 // This code is contributed by manuraj singh rathore
+class Solution456
+{
+    static boolean isIsogram(String data){
+        HashMap<Character,Integer> hm=new HashMap<>();
+        for(int i=0;i<data.length();i++){
+            if(hm.containsKey(data.charAt(i))){
+                hm.put(data.charAt(i),hm.get(data.charAt(i))+1);
+            }
+            else{
+                hm.put(data.charAt(i),1);
+            }
+        }
+        hm.values();
+        for(int i=0;i<data.length();i++){
+            if(hm.get(data.charAt(i))>1){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+       Scanner sc=new Scanner(System.in);
+       int t=sc.nextInt();
+
+       while (t-->0){
+           String s=new String(sc.next());
+           HashSet<Character> hs=new HashSet<>();
+           for (int i = 0; i < s.length(); i++) {
+               hs.add(s.charAt(i));
+           }
+           char []c=s.toCharArray();
+           Arrays.sort(c);
+       }
+
+    }
+}
+class Match_specific_pattern{
+    public static void main(String[] args) {
+        String dict[]={"abb","abc","xyz","xyy"};
+        String patter="poo";
+        ArrayList<String> al=new ArrayList<>();
+        for(String word: dict)
+        {
+
+            if(word.length() != patter.length())
+            {
+                continue;
+            }
+
+            int hash1[] = new int[26];
+            int hash2[] = new int[26];
+            int i;
+
+            for(i = 0; i < word.length(); i++)
+            {
+                if(hash1[word.charAt(i)- 'a'] == hash2[patter.charAt(i) - 'a'])
+                {
+                    hash1[word.charAt(i) - 'a']++;
+                    hash2[patter.charAt(i) - 'a']++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            if(i == word.length())
+            {
+                al.add(word);
+            }
+        }
+        System.out.println(al);
+
+
+    }
+}
+class s{
+    public static void main(String[] args) {
+
+        String dict[]={"abb","abc","xyz","xyy"};
+        String patter="poo";
+        int s[]=new int[26];
+        System.out.println(s[patter.charAt(0)-'a']);
+    }
+}
